@@ -7,18 +7,18 @@
         
         <!-- UNIQUE BLACK & WHITE BLACK MESA SECURITY CARD -->
         <div class="bg-gradient-to-br from-zinc-950 via-black to-zinc-900 p-6 rounded-2xl border-2 border-zinc-200/80 shadow-2xl flex flex-col justify-between h-64 relative overflow-hidden text-white">
-            <!-- Background Watermark Logo (Pure Vector Silhouette) -->
-            <svg class="absolute -right-6 -bottom-6 w-44 h-44 text-white/10 fill-current pointer-events-none" viewBox="0 0 24 24">
-                <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12C4,14.39 5.05,16.53 6.71,18H9V12H17L19.15,15.59C19.69,14.5 20,13.29 20,12A8,8 0 0,0 12,4Z"/>
-            </svg>
+            <!-- Background Watermark Logo (Local File) -->
+            <img src="{{ url_for('static', filename='logo.png') }}" 
+                 alt="Watermark" 
+                 class="absolute -right-8 -bottom-8 w-44 h-44 opacity-15 pointer-events-none filter invert brightness-200">
 
             <!-- Card Header -->
             <div class="flex justify-between items-start z-10">
                 <div class="flex items-center gap-3">
                     <div class="bg-white p-1 rounded-sm flex items-center justify-center shadow">
-                        <svg class="w-6 h-6 text-black fill-current" viewBox="0 0 24 24">
-                            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12C4,14.39 5.05,16.53 6.71,18H9V12H17L19.15,15.59C19.69,14.5 20,13.29 20,12A8,8 0 0,0 12,4Z"/>
-                        </svg>
+                        <img src="{{ url_for('static', filename='logo.png') }}" 
+                             alt="Logo" 
+                             class="w-6 h-6 object-contain">
                     </div>
                     <div>
                         <span class="text-xs font-mono tracking-widest text-zinc-400 uppercase">FINANCIAL ACCESS PASS</span>
