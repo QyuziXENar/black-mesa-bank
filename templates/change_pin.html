@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Change PIN • Black Mesa Federal Reserve{% endblock %}
+{% block content %}
+<div class="min-h-[60vh] flex items-center justify-center">
+    <div class="bg-slate-800 border border-slate-700 p-8 rounded-2xl shadow-2xl max-w-md w-full">
+        <h2 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+            <i data-lucide="key" class="w-6 h-6 text-orange-400"></i> Update Security PIN
+        </h2>
+        <p class="text-xs text-slate-400 mb-6">Enter your current PIN to authenticate and set a new one.</p>
+
+        <form method="POST" action="{{ url_for('change_pin') }}" class="space-y-4">
+            <div>
+                <label class="block text-xs uppercase font-semibold text-slate-400 mb-1">Current PIN</label>
+                <input type="password" name="current_pin" required placeholder="Enter current PIN"
+                    class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 font-mono">
+            </div>
+            <div>
+                <label class="block text-xs uppercase font-semibold text-slate-400 mb-1">New PIN</label>
+                <input type="password" name="new_pin" required placeholder="Enter new PIN (min 4 digits)"
+                    class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 font-mono">
+            </div>
+            <div>
+                <label class="block text-xs uppercase font-semibold text-slate-400 mb-1">Confirm New PIN</label>
+                <input type="password" name="confirm_new_pin" required placeholder="Re-enter new PIN"
+                    class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 font-mono">
+            </div>
+            <div class="flex gap-2 pt-2">
+                <a href="{{ url_for('dashboard') }}" class="w-1/2 text-center bg-slate-700 hover:bg-slate-600 text-slate-200 py-2.5 rounded-lg text-sm font-semibold">Back</a>
+                <button type="submit" class="w-1/2 bg-orange-500 hover:bg-orange-600 text-white py-2.5 rounded-lg text-sm font-semibold">Save New PIN</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

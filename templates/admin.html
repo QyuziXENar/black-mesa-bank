@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}ADMIN CONTROL // Black Mesa Research Facility{% endblock %}
+{% block content %}
+<div class="space-y-4">
+    <!-- Top Bar -->
+    <div class="flex justify-between items-center bg-slate-900/90 retro-window p-3">
+        <div>
+            <h1 class="text-xl font-black text-amber-400 font-retro tracking-widest uppercase">
+                &gt;&gt; CENTRAL ADMINISTRATION // SECTOR C OVERSIGHT
+            </h1>
+            <p class="text-[11px] text-slate-400">MANAGEMENT OF CUSTOMER ACCOUNTS & VAULT LIQUIDITY</p>
+        </div>
+        <div class="text-right">
+            <span class="text-[10px] text-slate-400 uppercase">TOTAL SYSTEM LIQUIDITY:</span>
+            <p class="text-2xl font-black font-retro text-emerald-400">${{ "{:,.2f}".format(total_deposits) }}</p>
+        </div>
+    </div>
+
+    <!-- CRUD: CREATE Customer Account -->
+    <div class="bg-slate-900/90 retro-window p-4">
+        <div class="bg-slate-800 border-b border-slate-700 px-3 py-1 -mt-4 -mx-4 mb-3 flex justify-between items-center text-xs">
+            <span class="text-amber-400 font-bold font-retro">ONBOARD_PERSONNEL::CREATE_RECORD.EXE</span>
+            <span class="text-[10px] text-emerald-400">CRUD: [CREATE]</span>
+        </div>
+        <form method="POST" action="{{ url_for('create_customer') }}" class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs font-mono">
+            <div>
+                <label class="block uppercase text-amber-300 mb-1">&gt; USERNAME:</label>
+                <input type="text" name="username" required placeholder="e.g. barney"
+                    class="w-full bg-black border border-slate-600 focus:border-amber-500 px-3 py-1.5 text-emerald-400 focus:outline-none">
+            </div>
+            <div>
+                <label class="block uppercase text-amber-300 mb-1">&gt; DEFAULT PIN:</label>
+                <input type="text" name="default_pin" required placeholder="e.g. 5678"
+                    class="w-full bg-black border border-slate-600 focus:border-amber-500 px-3 py-1.5 text-emerald-400 focus:outline-none">
+            </div>
+            <div>
+                <label class="block uppercase text-amber-300 mb-1">&gt; INITIAL BALANCE ($):</label>
+                <input type="number" step="0.01" min="0" name="initial_balance" value="250.00"
+                    class="w-full bg-black border border-slate-600 focus:border-amber-500 px-3 py-1.5 text-emerald-400 focus:outline-none">
+            </div>
+            <div class="flex items-end">
+                <button type="submit" class="w-full retro-btn bg-amber-600 hover:bg-amber-500 text-black font-bold py-1.5 uppercase">
+                    [+ CREATE ACCOUNT]
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- CRUD: READ & DELETE Customer Records -->
+    <div class="bg-slate-900/90 retro-window p-4">
+        <div class="bg-slate-800 border-b border-slate-700 px-3 py-1 -mt-4 -mx-4 mb-3 flex justify-between items-center text-xs">
+            <span class="text-amber-400 font-bold font-retro">REGISTERED_PERSONNEL_DATABASE::RECORDS.DAT</span>
+            <span class="text-[10px] text-slate-400">CRUD: [READ / DELETE]</span>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs font-mono text-slate-300">
+                <thead class="bg-black text-[11px] uppercase text-amber-400 border-b border-slate-700">
+                    <tr>
+                        <th class="py-2 px-3">ACCOUNT NO.</th>
+                        <th class="py-2 px-3">OPERATOR_ID</th>
+                        <th class="py-2 px-3">REGISTRATION DATE</th>
+                        <th class="py-2 px-3 text-right">BALANCE</th>
+                        <th class="py-2 px-3 text-center">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800">
+                    {% for c in customers %}
+                    <tr class="hover:bg-slate-800/60">
+                        <td class="py-2 px-3 text-amber-300 font-bold">{{ c.account_number }}</td>
+                        <td class="py-2 px-3 font-bold text-white uppercase">{{ c.username }}</td>
+                        <td class="py-2 px-3 text-slate-400">{{ c.created_at.strftime('%Y-%m-%d') }}</td>
+                        <td class="py-2 px-3 text-right text-emerald-400 font-bold">${{ "{:,.2f}".format(c.balance) }}</td>
+                        <td class="py-2 px-3 text-center">
+                            <!-- CRUD: DELETE Operation with Confirmation -->
+                            <form method="POST" action="{{ url_for('delete_customer', user_id=c.id) }}" 
+                                  onsubmit="return confirm('WARNING: Are you sure you want to permanently delete account {{ c.username }} ({{ c.account_number }})?');">
+                                <button type="submit" class="retro-btn bg-red-900 hover:bg-red-800 text-red-200 text-[10px] px-2 py-0.5 uppercase font-bold">
+                                    [TERMINATE RECORD]
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center py-4 text-slate-500">NO REGISTERED PERSONNEL RECORDS FOUND.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
