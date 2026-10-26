@@ -2,25 +2,23 @@
 {% block title %}TERMINAL // {{ user.username }} • Black Mesa{% endblock %}
 {% block content %}
 <div class="space-y-6">
-    <!-- Top System Windows (Enlarged & Enhanced) -->
+    <!-- Top System Windows -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         <!-- UNIQUE BLACK & WHITE BLACK MESA SECURITY CARD -->
         <div class="bg-gradient-to-br from-zinc-950 via-black to-zinc-900 p-6 rounded-2xl border-2 border-zinc-200/80 shadow-2xl flex flex-col justify-between h-64 relative overflow-hidden text-white">
-            <!-- Background Watermark Logo (Pure White Contrast) -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Black_Mesa_logo.svg" 
-                 referrerpolicy="no-referrer"
-                 alt="Watermark" 
-                 class="absolute -right-8 -bottom-8 w-44 h-44 opacity-15 pointer-events-none filter invert brightness-200">
+            <!-- Background Watermark Logo (Pure Vector Silhouette) -->
+            <svg class="absolute -right-6 -bottom-6 w-44 h-44 text-white/10 fill-current pointer-events-none" viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12C4,14.39 5.05,16.53 6.71,18H9V12H17L19.15,15.59C19.69,14.5 20,13.29 20,12A8,8 0 0,0 12,4Z"/>
+            </svg>
 
             <!-- Card Header -->
             <div class="flex justify-between items-start z-10">
                 <div class="flex items-center gap-3">
-                    <div class="bg-white p-1.5 rounded-sm flex items-center justify-center shadow">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Black_Mesa_logo.svg" 
-                             referrerpolicy="no-referrer" 
-                             alt="Logo" 
-                             class="w-6 h-6 object-contain">
+                    <div class="bg-white p-1 rounded-sm flex items-center justify-center shadow">
+                        <svg class="w-6 h-6 text-black fill-current" viewBox="0 0 24 24">
+                            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12C4,14.39 5.05,16.53 6.71,18H9V12H17L19.15,15.59C19.69,14.5 20,13.29 20,12A8,8 0 0,0 12,4Z"/>
+                        </svg>
                     </div>
                     <div>
                         <span class="text-xs font-mono tracking-widest text-zinc-400 uppercase">FINANCIAL ACCESS PASS</span>
@@ -28,7 +26,7 @@
                     </div>
                 </div>
                 
-                <!-- Silver / Chrome Security Smart Chip -->
+                <!-- Silver Security Smart Chip -->
                 <div class="w-12 h-9 bg-gradient-to-br from-zinc-200 via-zinc-400 to-zinc-300 rounded border border-zinc-100 flex items-center justify-center shadow-md">
                     <div class="w-8 h-6 border border-zinc-600/50 rounded-sm grid grid-cols-2 gap-0.5 p-0.5">
                         <div class="border-r border-b border-zinc-600/40"></div>
@@ -57,7 +55,7 @@
             </div>
         </div>
 
-        <!-- Reserve Balance Window (Larger Typography) -->
+        <!-- Reserve Balance Window -->
         <div class="bg-slate-900/90 retro-window p-6 flex flex-col justify-between h-64">
             <div class="bg-slate-800 border-b border-slate-700 px-3 py-1.5 -mt-6 -mx-6 mb-2 flex justify-between items-center text-xs">
                 <span class="text-amber-400 font-bold font-retro tracking-wider">FUNDS::AVAILABLE.DAT</span>
@@ -73,7 +71,7 @@
             </div>
         </div>
 
-        <!-- Terminal Actions Window (Larger Buttons) -->
+        <!-- Terminal Actions Window -->
         <div class="bg-slate-900/90 retro-window p-6 flex flex-col justify-between h-64">
             <div class="bg-slate-800 border-b border-slate-700 px-3 py-1.5 -mt-6 -mx-6 mb-2 flex justify-between items-center text-xs">
                 <span class="text-amber-400 font-bold font-retro tracking-wider">COMMANDS::EXEC.BAT</span>
@@ -91,7 +89,7 @@
         </div>
     </div>
 
-    <!-- Ledger / Transaction Log Window (Larger & Clearer Spacing) -->
+    <!-- Ledger / Transaction Log Window -->
     <div class="bg-slate-900/90 retro-window p-6">
         <div class="bg-slate-800 border-b border-slate-700 px-4 py-2 -mt-6 -mx-6 mb-4 flex justify-between items-center text-sm">
             <span class="text-amber-400 font-bold font-retro text-base tracking-wider">SECTOR_AUDIT_LOG::MAINFRAME_RECORDS.LOG</span>
@@ -137,7 +135,7 @@
     </div>
 </div>
 
-<!-- Modal for Transactions (Scaled Up) -->
+<!-- Modal for Transactions -->
 <div id="txModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="bg-slate-900 retro-window p-6 max-w-md w-full">
         <div class="bg-slate-800 border-b border-slate-700 px-4 py-2 -mt-6 -mx-6 mb-5 flex justify-between items-center text-sm">
